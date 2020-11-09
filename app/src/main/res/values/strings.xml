@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Assinment Week 9</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="register">Register?</string>
+    <string name="password_confirmation">Password Confirmation</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in_gmail">Sign In Gmail</string>
+    <string name="nama">Nama</string>
+    <string name="alamat">Alamat</string>
+    <string name="pekerjaan">Pekerjaan</string>
+    <string name="level">Level</string>
+    <string name="tambahkan_user">Tambahkan User</string>
+    <string name="hp">Hp</string>
+    <string name="add_user">Add User</string>
+    <string name="job">Job</string>
+    <string-array name="level">
+        <item name="admin">Admin</item>
+        <item name="cust">Costumer</item>
+    </string-array>
+</resources>
