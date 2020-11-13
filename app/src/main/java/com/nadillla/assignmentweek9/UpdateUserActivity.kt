@@ -13,19 +13,22 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_tambah_user.*
+import kotlinx.android.synthetic.main.activity_update_user.*
 
-class TambahUserActivity : AppCompatActivity() {
+class UpdateUserActivity : AppCompatActivity() {
 
     //declare firebase database
     private var db: FirebaseDatabase? = null
 
+    var user : User?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tambah_user)
+        setContentView(R.layout.activity_update_user)
 
+        getParcel()
         initView()
         initFirebase()
+
         // Write a message to the database
         val database = Firebase.database
         val myRef = database.getReference("message")
@@ -63,16 +66,27 @@ class TambahUserActivity : AppCompatActivity() {
 //        spinner.onItemSelectedListener = this
     }
 
+    private fun getParcel() {
+        user = intent.getSerializableExtra("data")as User
+
+        edNameUp.setText(user?.name)
+        edAddress.setText(user?.address)
+        edHp.setText(user?.hp)
+        edEmail.setText(user?.email)
+        edJob.setText(user?.job)
+
+    }
+
 
     private fun initFirebase() {
         db = FirebaseDatabase.getInstance()
     }
 
     private fun initView() {
-        btnAddUser.setOnClickListener {
+        btnUpdteUser.setOnClickListener {
 
             //get inputan user
-            val name = edName.text.toString()
+            val name = edNameUp.text.toString()
             val email = edEmail.text.toString()
             val hp = edHp.text.toString()
             val address = edAddress.text.toString()
@@ -81,20 +95,19 @@ class TambahUserActivity : AppCompatActivity() {
 
 
             //masukin ke model
+            val user2 = User(name, email, hp, address, job)
 
 
             //tambahkan pengecekan user
             val myRef = db?.getReference("Users")
 
             // get key
-            val key = myRef?.push()?.key
-            val user = User(name, email, hp, address, job)
-
+//            val key = myRef?.push()?.key
 
             //insert ke db
-            myRef?.child(key?: "")?.setValue(user)
-            finish()
+            myRef?.child(user?.key?: "")?.setValue(user2)
 
+            finish()
 
         }
     }

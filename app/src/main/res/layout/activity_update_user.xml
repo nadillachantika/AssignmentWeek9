@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".UpdateUserActivity">
+
+
+    <EditText
+        android:id="@+id/edNameUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nama"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/edEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:hint="@string/email"
+        android:textColor="@android:color/black" />
+
+
+    <EditText
+        android:id="@+id/edHp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hp"
+        android:inputType="phone"
+        android:textColor="@android:color/black" />
+
+
+    <EditText
+        android:id="@+id/edAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/alamat"
+        android:textColor="@android:color/black" />
+
+
+    <EditText
+        android:id="@+id/edJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pekerjaan"
+        android:textColor="@android:color/black" />
+
+
+    <Spinner
+        android:id="@+id/spinLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/level" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnUpdteUser"
+        android:text="@string/update_user"/>
+
+</LinearLayout>

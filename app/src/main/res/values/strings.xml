@@ -15,8 +15,11 @@
     <string name="hp">Hp</string>
     <string name="add_user">Add User</string>
     <string name="job">Job</string>
+    <string name="update_user">Update User</string>
+    <string name="hapus">Hapus</string>
     <string-array name="level">
         <item name="admin">Admin</item>
         <item name="cust">Costumer</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
