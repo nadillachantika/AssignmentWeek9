@@ -1,5 +1,6 @@
 package com.nadillla.assignmentweek9
 
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -62,6 +64,44 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled=true
         mMap.uiSettings.isCompassEnabled=true
 
+        //type map
+        btnHybrid.setOnClickListener {
+            mMap.mapType=GoogleMap.MAP_TYPE_HYBRID
+        }
+        btnSatelite.setOnClickListener {
+            mMap.mapType=GoogleMap.MAP_TYPE_SATELLITE
+        }
+        btnTerrain.setOnClickListener {
+            mMap.mapType=GoogleMap.MAP_TYPE_TERRAIN
+        }
+        btnNormal.setOnClickListener {
+            mMap.mapType=GoogleMap.MAP_TYPE_NORMAL
+        }
 
+        mMap.setOnMapClickListener {
+            val lat = it.latitude
+            val lon = it.longitude
+
+            mMap.clear()
+
+            val nama = convertCoorinate(lat,lon)
+
+            textCordinate.text="$lat-$lon"
+            textNamaLokasi.text=nama
+
+            mMap.addMarker(MarkerOptions().position(LatLng(lat,lon)).title("Daerah Baru"))
+            mMap.moveCamera((CameraUpdateFactory.newLatLng(LatLng(lat,lon))))
+
+        }
+
+
+
+    }
+
+    fun convertCoorinate(lat : Double, lon: Double):String{
+        val geocoder = Geocoder(this)
+        val dataLocation = geocoder.getFromLocation(lat,lon,1)
+        val nameLocation=dataLocation.get(0).getAddressLine(0)
+        return nameLocation
     }
 }
